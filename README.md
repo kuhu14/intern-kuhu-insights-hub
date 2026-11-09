@@ -37,6 +37,20 @@ docs/           Documentation (git-drills.md, etc.)
 scripts/        Helper scripts (check_env.sh)
 ```
 
+## Code Quality (pre-commit)
+Python uses **ruff** (lint) and **black** (format). TypeScript uses **prettier** (format) and **eslint** (lint).
+They run automatically on every commit. One-time setup from the repository root:
+
+```bash
+python -m venv .venv
+source .venv/Scripts/activate        # Windows Git Bash (macOS/Linux: .venv/bin/activate)
+pip install -r backend/requirements-dev.txt
+(cd frontend && npm install)
+pre-commit install
+```
+
+Run every check by hand with `pre-commit run --all-files`. More details and a demo are in `docs/quality-tools.md`.
+
 ## Branch Rules
 - `main`: stable, release-ready code only. No direct commits.
 - `dev`: integration branch. All work is merged here through Pull Requests.
