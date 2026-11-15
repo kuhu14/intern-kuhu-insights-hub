@@ -64,13 +64,13 @@ Dist Code : 25
 
 Duplicate `Invoice No` rows : 60
 
-Region distinct values: 24 intead of 4 (N, north, EAST...)
+Region distinct values: 24 instead of 4 (N, north, EAST...)
 
 Dates in 3 mixed formats
 
 Test rows for `D999` : 6
 
-Rows with negative `Qty`: 91 (79 are valide credit notes, 12 are errors)
+Rows with negative `Qty`: 91 (79 are valid credit notes, 12 are errors)
 
 Rows with `Qty` over 1000: 14
 

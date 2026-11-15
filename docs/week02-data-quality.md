@@ -41,7 +41,7 @@ The counts for Rules 3–7 are taken after duplicates and test rows were removed
 
 ## Judgement calls
 
-1. **Order of steps.** Duplicates and test rows are removed _before_ rejects are split. Doing it the other way round double-counts duplicated bad rows (e.g. 14 rows have Qty over 1000 in the raw file, but only 8 after de-duplication).
+1. **Order of steps.** Duplicates and test rows are removed _before_ rejects are split. Doing it the other way round would push duplicate copies and test records into `rejects.csv` and inflate the counts (e.g. 14 rows have Qty over 1000 in the raw file, but 6 of them are D999 test rows, so only 8 are real rejects).
 2. **Which duplicate to keep.** Kept the first. Every duplicate pair was an exact copy in all 12 columns, so no information was lost.
 3. **One reason per reject.** A row is given the first reason it matches, in this order: `blank_qty` → `blank_net_value` → `negative_qty_not_credit_note` → `qty_over_1000`. This keeps the counts adding up to 80.
 4. **Rejects are not fixed.** For example, Qty over 1000 might be a typo, but I didn't guess the correct value. These rows are kept in `rejects.csv` so someone can follow them up with the distributor.
