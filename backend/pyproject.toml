@@ -1,0 +1,29 @@
+[project]
+name = "insights-hub-backend"
+version = "0.1.0"
+requires-python = ">=3.11"
+
+# ---------- black: formatter ----------
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+# ---------- ruff: linter ----------
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+exclude = [".venv", "venv", "__pycache__", ".ruff_cache"]
+
+[tool.ruff.lint]
+# E/W = style, F = unused imports/variables, I = import order,
+# B = common bugs, UP = modern Python syntax
+select = ["E", "W", "F", "I", "B", "UP"]
+ignore = ["E501"]   # black handles line length
+
+[tool.ruff.lint.isort]
+known-first-party = ["backend", "warmup"]
+
+# ---------- pytest ----------
+[tool.pytest.ini_options]
+testpaths = ["warmup"]
+pythonpath = ["."]

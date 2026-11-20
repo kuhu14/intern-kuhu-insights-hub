@@ -1,0 +1,51 @@
+# Runs automatically on `git commit`. Install once with: pre-commit install
+# Run on every file manually with: pre-commit run --all-files
+#
+# Python hooks use `entry: python -m ...` because Windows Smart App Control
+# blocks the unsigned .exe launchers pre-commit would otherwise create.
+repos:
+  # Basic hygiene for all files
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+        entry: python -m pre_commit_hooks.trailing_whitespace_fixer
+      - id: end-of-file-fixer
+        entry: python -m pre_commit_hooks.end_of_file_fixer
+      - id: check-yaml
+        entry: python -m pre_commit_hooks.check_yaml
+      - id: check-merge-conflict
+        entry: python -m pre_commit_hooks.check_merge_conflict
+      - id: check-added-large-files
+        entry: python -m pre_commit_hooks.check_added_large_files
+
+  # Python: ruff (lint) + black (format), config in backend/pyproject.toml
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.4
+    hooks:
+      - id: ruff-check
+        entry: python -m ruff check --force-exclude
+        args: [--fix]
+        files: ^backend/
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: 26.10.1
+    hooks:
+      - id: black
+        entry: python -m black
+        files: ^backend/
+
+  # TypeScript: prettier + eslint, using the versions in frontend/package.json.
+  # Needs `npm install` in frontend/ first.
+  - repo: local
+    hooks:
+      - id: prettier
+        name: prettier
+        language: system
+        entry: bash -c 'cd frontend && npx --no-install prettier --write --ignore-unknown "${@#frontend/}"' --
+        files: ^frontend/
+        exclude: ^frontend/package-lock\.json$
+      - id: eslint
+        name: eslint
+        language: system
+        entry: bash -c 'cd frontend && npx --no-install eslint --fix --max-warnings=0 "${@#frontend/}"' --
+        files: ^frontend/.*\.(ts|tsx|js|mjs)$

@@ -1,0 +1,4 @@
+# Use LF line endings everywhere so Windows checkouts match prettier/black
+* text=auto eol=lf
+*.png binary
+*.jpg binary
