@@ -1,0 +1,81 @@
+invoice_no,invoice_date,region,state,dist_code,distributor_name,sku_code,sku_name,brand,channel,qty,net_value,is_return,reason
+INV-20260715-04761,2026-07-15,North,Punjab,D005,Ludhiana Traders,EM-1016,Zandu Chyawanprash 900 g,Zandu,Chemist,,6320.23,False,blank_qty
+INV-20250607-00652,2025-06-07,East,West Bengal,D014,Siliguri Distributors,EM-1013,Zandu Balm 25 ml,Zandu,General Trade,,5899.41,False,blank_qty
+INV-20260106-02778,2026-01-06,East,West Bengal,D014,Siliguri Distributors,EM-1001,Navratna Cool Oil 100 ml,Navratna,Modern Trade,106.0,,False,blank_net_value
+INV-20260827-05181,2026-08-27,South,Karnataka,D007,Bengaluru Enterprises,EM-1019,Fair and Handsome Face Wash 100 g,Fair and Handsome,General Trade,,10228.93,False,blank_qty
+INV-20260816-05051,2026-08-16,North,Punjab,D005,Ludhiana Traders,EM-1009,BoroPlus Antiseptic Cream 40 ml,BoroPlus,General Trade,,9821.51,False,blank_qty
+INV-20260226-03307,2026-02-26,South,Tamil Nadu,D009,Chennai Traders,EM-1021,Mentho Plus Balm 10 ml,Mentho Plus,General Trade,177000.0,7678.42,False,qty_over_1000
+INV-20250522-00505,2025-05-22,North,Punjab,D006,Amritsar Distributors,EM-1014,Zandu Ultra Power Balm 8 ml,Zandu,General Trade,,7823.48,False,blank_qty
+INV-20251001-01846,2025-10-01,South,Telangana,D012,Warangal Agencies,EM-1004,Navratna Cool Talc 100 g,Navratna,Chemist,326000.0,16723.96,False,qty_over_1000
+INV-20260903-05225,2026-09-03,South,Tamil Nadu,D009,Chennai Traders,EM-1012,Zandu Balm 8 ml,Zandu,General Trade,261000.0,12591.32,False,qty_over_1000
+INV-20250527-00562,2025-05-27,East,Bihar,D018,Gaya Distributors,EM-1013,Zandu Balm 25 ml,Zandu,General Trade,-85.0,-9284.91,False,negative_qty_not_credit_note
+INV-20260124-02988,2026-01-24,West,Rajasthan,D024,Jodhpur Agencies,EM-1014,Zandu Ultra Power Balm 8 ml,Zandu,Chemist,-344.0,-18878.52,False,negative_qty_not_credit_note
+INV-20260602-04289,2026-06-02,West,Gujarat,D022,Surat Distributors,EM-1023,He Deodorant 150 ml,He,General Trade,,15515.58,False,blank_qty
+INV-20260628-04596,2026-06-28,South,Tamil Nadu,D009,Chennai Traders,EM-1022,Mentho Plus Pain Relief Spray 50 g,Mentho Plus,General Trade,,21679.4,False,blank_qty
+INV-20250707-00966,2025-07-07,North,Delhi,D002,Okhla Distributors,EM-1014,Zandu Ultra Power Balm 8 ml,Zandu,General Trade,,6200.3,False,blank_qty
+INV-20250406-00057,2025-04-06,South,Telangana,D012,Warangal Agencies,EM-1022,Mentho Plus Pain Relief Spray 50 g,Mentho Plus,General Trade,,9595.47,False,blank_qty
+INV-20250822-01441,2025-08-22,East,Odisha,D015,Bhubaneswar Enterprises,EM-1004,Navratna Cool Talc 100 g,Navratna,General Trade,80.0,,False,blank_net_value
+INV-20260228-03336,2026-02-28,West,Maharashtra,D019,Mumbai Enterprises,EM-1005,Navratna Cool Talc 300 g,Navratna,General Trade,,12234.0,False,blank_qty
+INV-20260227-03322,2026-02-27,East,Bihar,D018,Gaya Distributors,EM-1019,Fair and Handsome Face Wash 100 g,Fair and Handsome,Modern Trade,-87.0,-11838.91,False,negative_qty_not_credit_note
+INV-20260705-04655,2026-07-05,North,Uttar Pradesh,D003,Lucknow Enterprises,EM-1005,Navratna Cool Talc 300 g,Navratna,General Trade,-30.0,-3791.26,False,negative_qty_not_credit_note
+INV-20250616-00758,2025-06-16,East,Bihar,D017,Patna Traders,EM-1007,Kesh King Ayurvedic Oil 200 ml,Kesh King,General Trade,-52.0,-21453.99,False,negative_qty_not_credit_note
+INV-20250417-00195,2025-04-17,East,Odisha,D016,Cuttack Agencies,EM-1019,Fair and Handsome Face Wash 100 g,Fair and Handsome,Chemist,33.0,,False,blank_net_value
+INV-20260126-03005,2026-01-26,South,Telangana,D011,Hyderabad Enterprises,EM-1006,Kesh King Ayurvedic Oil 100 ml,Kesh King,General Trade,55.0,,False,blank_net_value
+INV-20260327-03640,2026-03-27,South,Tamil Nadu,D009,Chennai Traders,EM-1005,Navratna Cool Talc 300 g,Navratna,General Trade,,27618.85,False,blank_qty
+INV-20260625-04559,2026-06-25,West,Gujarat,D022,Surat Distributors,EM-1007,Kesh King Ayurvedic Oil 200 ml,Kesh King,General Trade,,28352.62,False,blank_qty
+INV-20260518-04169,2026-05-18,East,Bihar,D018,Gaya Distributors,EM-1019,Fair and Handsome Face Wash 100 g,Fair and Handsome,Modern Trade,,5058.85,False,blank_qty
+INV-20260807-04958,2026-08-07,North,Uttar Pradesh,D004,Kanpur Agencies,EM-1003,Navratna Cool Oil 500 ml,Navratna,General Trade,,10991.13,False,blank_qty
+INV-20260509-04068,2026-05-09,South,Karnataka,D008,Mysuru Agencies,EM-1012,Zandu Balm 8 ml,Zandu,Chemist,-154.0,-7449.88,False,negative_qty_not_credit_note
+INV-20251119-02336,2025-11-19,South,Tamil Nadu,D009,Chennai Traders,EM-1017,Dermicool Prickly Heat Powder 150 g,Dermicool,General Trade,72.0,,False,blank_net_value
+INV-20250709-01003,2025-07-09,East,Odisha,D016,Cuttack Agencies,EM-1001,Navratna Cool Oil 100 ml,Navratna,Modern Trade,,5644.93,False,blank_qty
+INV-20260616-04441,2026-06-16,North,Uttar Pradesh,D003,Lucknow Enterprises,EM-1007,Kesh King Ayurvedic Oil 200 ml,Kesh King,Chemist,30.0,,False,blank_net_value
+INV-20251115-02288,2025-11-15,North,Uttar Pradesh,D004,Kanpur Agencies,EM-1011,BoroPlus Moisturising Lotion 200 ml,BoroPlus,Chemist,,13971.72,False,blank_qty
+INV-20251210-02524,2025-12-10,North,Uttar Pradesh,D004,Kanpur Agencies,EM-1016,Zandu Chyawanprash 900 g,Zandu,General Trade,,12134.52,False,blank_qty
+INV-20251214-02563,2025-12-14,West,Maharashtra,D019,Mumbai Enterprises,EM-1013,Zandu Balm 25 ml,Zandu,Modern Trade,-145.0,-16189.9,False,negative_qty_not_credit_note
+INV-20250628-00906,2025-06-28,West,Rajasthan,D023,Jaipur Enterprises,EM-1005,Navratna Cool Talc 300 g,Navratna,Chemist,133.0,,False,blank_net_value
+INV-20251010-01926,2025-10-10,South,Tamil Nadu,D010,Coimbatore Distributors,EM-1021,Mentho Plus Balm 10 ml,Mentho Plus,Chemist,110.0,,False,blank_net_value
+INV-20260716-04771,2026-07-16,North,Delhi,D001,Karol Bagh Traders,EM-1005,Navratna Cool Talc 300 g,Navratna,General Trade,,7196.02,False,blank_qty
+INV-20250821-01421,2025-08-21,North,Delhi,D001,Karol Bagh Traders,EM-1017,Dermicool Prickly Heat Powder 150 g,Dermicool,General Trade,92.0,,False,blank_net_value
+INV-20251005-01882,2025-10-05,East,West Bengal,D014,Siliguri Distributors,EM-1006,Kesh King Ayurvedic Oil 100 ml,Kesh King,General Trade,,8865.79,False,blank_qty
+INV-20250710-01016,2025-07-10,West,Maharashtra,D020,Pune Agencies,EM-1007,Kesh King Ayurvedic Oil 200 ml,Kesh King,General Trade,,24903.08,False,blank_qty
+INV-20250924-01791,2025-09-24,West,Maharashtra,D020,Pune Agencies,EM-1022,Mentho Plus Pain Relief Spray 50 g,Mentho Plus,Chemist,,13701.61,False,blank_qty
+INV-20260105-02767,2026-01-05,South,Karnataka,D007,Bengaluru Enterprises,EM-1007,Kesh King Ayurvedic Oil 200 ml,Kesh King,General Trade,58.0,,False,blank_net_value
+INV-20260124-02987,2026-01-24,West,Rajasthan,D023,Jaipur Enterprises,EM-1013,Zandu Balm 25 ml,Zandu,General Trade,149.0,,False,blank_net_value
+INV-20260811-05002,2026-08-11,North,Uttar Pradesh,D003,Lucknow Enterprises,EM-1010,BoroPlus Antiseptic Cream 80 ml,BoroPlus,Modern Trade,,10511.24,False,blank_qty
+INV-20250408-00074,2025-04-08,West,Maharashtra,D019,Mumbai Enterprises,EM-1016,Zandu Chyawanprash 900 g,Zandu,General Trade,178000.0,53674.65,False,qty_over_1000
+INV-20260209-03121,2026-02-09,South,Telangana,D012,Warangal Agencies,EM-1012,Zandu Balm 8 ml,Zandu,Chemist,255.0,,False,blank_net_value
+INV-20250512-00408,2025-05-12,East,West Bengal,D013,Kolkata Traders,EM-1012,Zandu Balm 8 ml,Zandu,General Trade,114.0,,False,blank_net_value
+INV-20250903-01538,2025-09-03,South,Tamil Nadu,D010,Coimbatore Distributors,EM-1005,Navratna Cool Talc 300 g,Navratna,General Trade,70.0,,False,blank_net_value
+INV-20250611-00701,2025-06-11,East,Odisha,D016,Cuttack Agencies,EM-1003,Navratna Cool Oil 500 ml,Navratna,General Trade,-58.0,-14626.28,False,negative_qty_not_credit_note
+INV-20260528-04267,2026-05-28,South,Karnataka,D007,Bengaluru Enterprises,EM-1009,BoroPlus Antiseptic Cream 40 ml,BoroPlus,General Trade,-200.0,-15038.28,False,negative_qty_not_credit_note
+INV-20250917-01716,2025-09-17,West,Rajasthan,D024,Jodhpur Agencies,EM-1006,Kesh King Ayurvedic Oil 100 ml,Kesh King,General Trade,,11239.93,False,blank_qty
+INV-20260815-05046,2026-08-15,East,Bihar,D018,Gaya Distributors,EM-1017,Dermicool Prickly Heat Powder 150 g,Dermicool,General Trade,83000.0,7144.21,False,qty_over_1000
+INV-20260526-04251,2026-05-26,West,Maharashtra,D020,Pune Agencies,EM-1015,Zandu Pancharishta 450 ml,Zandu,General Trade,62.0,,False,blank_net_value
+INV-20260521-04201,2026-05-21,East,Odisha,D016,Cuttack Agencies,EM-1004,Navratna Cool Talc 100 g,Navratna,General Trade,,8630.84,False,blank_qty
+INV-20250414-00146,2025-04-14,East,West Bengal,D013,Kolkata Traders,EM-1002,Navratna Cool Oil 200 ml,Navratna,General Trade,96000.0,10453.13,False,qty_over_1000
+INV-20260728-04901,2026-07-28,West,Rajasthan,D023,Jaipur Enterprises,EM-1003,Navratna Cool Oil 500 ml,Navratna,General Trade,,28250.36,False,blank_qty
+INV-20250903-01544,2025-09-03,East,Odisha,D016,Cuttack Agencies,EM-1022,Mentho Plus Pain Relief Spray 50 g,Mentho Plus,General Trade,50.0,,False,blank_net_value
+INV-20250807-01272,2025-08-07,West,Maharashtra,D020,Pune Agencies,EM-1016,Zandu Chyawanprash 900 g,Zandu,General Trade,,9011.12,False,blank_qty
+INV-20260914-05337,2026-09-14,East,Odisha,D015,Bhubaneswar Enterprises,EM-1011,BoroPlus Moisturising Lotion 200 ml,BoroPlus,Chemist,,5999.29,False,blank_qty
+INV-20260610-04368,2026-06-10,South,Tamil Nadu,D009,Chennai Traders,EM-1021,Mentho Plus Balm 10 ml,Mentho Plus,Modern Trade,-236.0,-10097.47,False,negative_qty_not_credit_note
+INV-20251204-02470,2025-12-04,North,Uttar Pradesh,D003,Lucknow Enterprises,EM-1015,Zandu Pancharishta 450 ml,Zandu,Modern Trade,39000.0,5787.6,False,qty_over_1000
+INV-20260523-04222,2026-05-23,East,Bihar,D018,Gaya Distributors,EM-1013,Zandu Balm 25 ml,Zandu,General Trade,,5323.87,False,blank_qty
+INV-20260807-04969,2026-08-07,West,Gujarat,D022,Surat Distributors,EM-1022,Mentho Plus Pain Relief Spray 50 g,Mentho Plus,Modern Trade,-80.0,-9412.56,False,negative_qty_not_credit_note
+INV-20250707-00975,2025-07-07,East,Bihar,D017,Patna Traders,EM-1001,Navratna Cool Oil 100 ml,Navratna,General Trade,117.0,,False,blank_net_value
+INV-20251116-02298,2025-11-16,East,West Bengal,D014,Siliguri Distributors,EM-1008,Kesh King Shampoo 200 ml,Kesh King,General Trade,62.0,,False,blank_net_value
+INV-20260103-02750,2026-01-03,West,Gujarat,D021,Ahmedabad Traders,EM-1012,Zandu Balm 8 ml,Zandu,General Trade,,7154.23,False,blank_qty
+INV-20260620-04494,2026-06-20,North,Punjab,D006,Amritsar Distributors,EM-1020,Fair and Handsome Cream 60 g,Fair and Handsome,General Trade,51.0,,False,blank_net_value
+INV-20260415-03822,2026-04-15,East,Odisha,D015,Bhubaneswar Enterprises,EM-1010,BoroPlus Antiseptic Cream 80 ml,BoroPlus,Modern Trade,42.0,,False,blank_net_value
+INV-20260810-04998,2026-08-10,East,Odisha,D016,Cuttack Agencies,EM-1021,Mentho Plus Balm 10 ml,Mentho Plus,Chemist,-87.0,-3826.55,False,negative_qty_not_credit_note
+INV-20260819-05088,2026-08-19,South,Tamil Nadu,D010,Coimbatore Distributors,EM-1019,Fair and Handsome Face Wash 100 g,Fair and Handsome,General Trade,60.0,,False,blank_net_value
+INV-20260711-04727,2026-07-11,East,West Bengal,D014,Siliguri Distributors,EM-1002,Navratna Cool Oil 200 ml,Navratna,General Trade,,5975.54,False,blank_qty
+INV-20260509-04074,2026-05-09,West,Maharashtra,D019,Mumbai Enterprises,EM-1019,Fair and Handsome Face Wash 100 g,Fair and Handsome,General Trade,,10601.24,False,blank_qty
+INV-20250901-01524,2025-09-01,West,Gujarat,D022,Surat Distributors,EM-1006,Kesh King Ayurvedic Oil 100 ml,Kesh King,General Trade,61.0,,False,blank_net_value
+INV-20251007-01902,2025-10-07,West,Maharashtra,D020,Pune Agencies,EM-1009,BoroPlus Antiseptic Cream 40 ml,BoroPlus,General Trade,182.0,,False,blank_net_value
+INV-20251022-02051,2025-10-22,South,Telangana,D011,Hyderabad Enterprises,EM-1008,Kesh King Shampoo 200 ml,Kesh King,General Trade,,18484.5,False,blank_qty
+INV-20250818-01391,2025-08-18,North,Punjab,D005,Ludhiana Traders,EM-1010,BoroPlus Antiseptic Cream 80 ml,BoroPlus,General Trade,48.0,,False,blank_net_value
+INV-20250924-01779,2025-09-24,North,Delhi,D001,Karol Bagh Traders,EM-1012,Zandu Balm 8 ml,Zandu,Modern Trade,213.0,,False,blank_net_value
+INV-20251213-02558,2025-12-13,East,Odisha,D016,Cuttack Agencies,EM-1009,BoroPlus Antiseptic Cream 40 ml,BoroPlus,General Trade,,9166.82,False,blank_qty
+INV-20260824-05146,2026-08-24,East,Odisha,D015,Bhubaneswar Enterprises,EM-1009,BoroPlus Antiseptic Cream 40 ml,BoroPlus,Chemist,133000.0,9981.26,False,qty_over_1000
+INV-20250727-01190,2025-07-27,East,Odisha,D015,Bhubaneswar Enterprises,EM-1020,Fair and Handsome Cream 60 g,Fair and Handsome,Chemist,,5716.49,False,blank_qty
+INV-20251103-02162,2025-11-03,South,Telangana,D012,Warangal Agencies,EM-1018,Dermicool Prickly Heat Powder 300 g,Dermicool,General Trade,,12426.67,False,blank_qty

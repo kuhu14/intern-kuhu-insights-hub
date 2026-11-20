@@ -18,6 +18,7 @@ repos:
         entry: python -m pre_commit_hooks.check_merge_conflict
       - id: check-added-large-files
         entry: python -m pre_commit_hooks.check_added_large_files
+        args: [--maxkb=1024]
 
   # Python: ruff (lint) + black (format), config in backend/pyproject.toml
   - repo: https://github.com/astral-sh/ruff-pre-commit
