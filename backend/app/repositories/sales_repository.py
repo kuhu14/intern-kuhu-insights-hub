@@ -110,3 +110,20 @@ class SalesRepository:
 
     def sku_exists(self, sku_code: str) -> bool:
         return bool((self._df["sku_code"] == sku_code).any())
+
+
+    def _distinct(self, columns: list[str]) -> list[dict[str, Any]]:
+        unique_rows = self._df[columns].drop_duplicates().sort_values(columns)
+        return unique_rows.to_dict(orient="records")
+
+    def regions(self) -> list[str]:
+        return [row["region"] for row in self._distinct(["region"])]
+
+    def brands(self) -> list[str]:
+        return [row["brand"] for row in self._distinct(["brand"])]
+
+    def skus(self) -> list[dict[str, Any]]:
+        return self._distinct(["sku_code", "sku_name", "brand"])
+
+    def distributors(self) -> list[dict[str, Any]]:
+        return self._distinct(["dist_code", "distributor_name", "region", "state"])
