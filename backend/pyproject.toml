@@ -26,5 +26,5 @@ known-first-party = ["backend", "warmup", "app"]
 
 # ---------- pytest ----------
 [tool.pytest.ini_options]
-testpaths = ["warmup" , "tests]
+testpaths = ["warmup", "tests"]
 pythonpath = ["."]
