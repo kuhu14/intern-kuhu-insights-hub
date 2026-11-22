@@ -5,6 +5,7 @@ from fastapi import FastAPI
 
 from app.config import settings
 from app.repositories.sales_repository import SalesRepository
+from app.routers import health, master_data, sales
 
 
 @asynccontextmanager
@@ -20,3 +21,8 @@ app = FastAPI(
     description="Read-only API over the cleaned Week 2 secondary sales dataset.",
     lifespan=lifespan,
 )
+
+
+app.include_router(health.router)
+app.include_router(sales.router)
+app.include_router(master_data.router)
