@@ -1,0 +1,43 @@
+# Insights Hub Sales API - example calls
+#
+# Open in VS Code with the "REST Client" extension (humao.rest-client),
+# start the API (cd backend; uvicorn app.main:app --reload),
+# then click "Send Request" above any request.
+
+@baseUrl = http://127.0.0.1:8000
+
+### Health check -> {"status": "ok"}
+GET {{baseUrl}}/health
+
+### List sales: September 2026 non-returns, 1 row per page -> total 298
+GET {{baseUrl}}/sales?is_return=false&date_from=2026-09-01&date_to=2026-09-30&page_size=1
+
+### Sales summary grouped by region -> 4 groups (East, North, South, West)
+GET {{baseUrl}}/sales/summary?group_by=region
+
+### Regions -> ["East", "North", "South", "West"]
+GET {{baseUrl}}/regions
+
+### Brands -> 8 brands
+GET {{baseUrl}}/brands
+
+### SKUs -> 23 SKUs with sku_code, sku_name, brand
+GET {{baseUrl}}/skus
+
+### Distributors -> 24 distributors with dist_code, distributor_name, region, state
+GET {{baseUrl}}/distributors
+
+
+# ---------- extra examples ----------
+
+### Summary with no filters -> row_count 5418, net_value 60984552.24
+GET {{baseUrl}}/sales/summary
+
+### Summary for one brand in one month -> net_value 462440.22
+GET {{baseUrl}}/sales/summary?brand=Navratna&date_from=2025-12-01&date_to=2025-12-31
+
+### Invalid input -> 422 VALIDATION_ERROR
+GET {{baseUrl}}/sales?page_size=500
+
+### Unknown sku_code -> 404 SKU_NOT_FOUND
+GET {{baseUrl}}/sales?sku_code=NOPE-1
