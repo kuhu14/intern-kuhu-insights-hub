@@ -11,6 +11,8 @@ class Settings(BaseSettings):
 
     app_name: str = "Insights Hub Sales API"
     sales_csv_path: Path = REPO_ROOT / "data_pipeline" / "output" / "clean_sales.csv"
+        # Only the local frontend may call this API from a browser.
+    cors_origins: list[str] = ["http://localhost:3000"]
 
 
 settings = Settings()
