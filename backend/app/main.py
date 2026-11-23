@@ -4,6 +4,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from app.config import settings
+from app.errors import register_exception_handlers
 from app.repositories.sales_repository import SalesRepository
 from app.routers import health, master_data, sales
 
@@ -22,6 +23,7 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+register_exception_handlers(app)
 
 app.include_router(health.router)
 app.include_router(sales.router)

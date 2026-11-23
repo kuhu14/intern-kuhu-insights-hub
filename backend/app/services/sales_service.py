@@ -1,5 +1,6 @@
 from typing import Any
 
+from app.errors import NotFoundError
 from app.repositories.sales_repository import SalesFilters, SalesRepository
 from app.schemas.sales import SalesFilterParams, SalesListParams, SalesSummaryParams
 
@@ -24,7 +25,12 @@ class SalesService:
     def __init__(self, repository: SalesRepository) -> None:
         self._repository = repository
 
+    def _check_sku(self, sku_code: str | None) -> None:
+        if sku_code is not None and not self._repository.sku_exists(sku_code):
+            raise NotFoundError("SKU_NOT_FOUND", f"Unknown sku_code: {sku_code}")
+
     def list_sales(self, params: SalesListParams) -> dict[str, Any]:
+        self._check_sku(params.sku_code)
         items, total = self._repository.filter(
             to_filters(params), page=params.page, page_size=params.page_size
         )
@@ -36,6 +42,7 @@ class SalesService:
         }
 
     def summarize(self, params: SalesSummaryParams) -> dict[str, Any]:
+        self._check_sku(params.sku_code)
         return self._repository.aggregate(to_filters(params), group_by=params.group_by)
 
     def regions(self) -> list[str]:

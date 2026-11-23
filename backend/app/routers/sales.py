@@ -3,6 +3,7 @@ from typing import Annotated, Any
 from fastapi import APIRouter, Depends, Query
 
 from app.dependencies import get_sales_service
+from app.schemas.errors import ERROR_RESPONSES
 from app.schemas.sales import (
     SalesListParams,
     SalesPage,
@@ -11,7 +12,7 @@ from app.schemas.sales import (
 )
 from app.services.sales_service import SalesService
 
-router = APIRouter(prefix="/sales", tags=["sales"])
+router = APIRouter(prefix="/sales", tags=["sales"], responses=ERROR_RESPONSES)
 
 ServiceDep = Annotated[SalesService, Depends(get_sales_service)]
 
