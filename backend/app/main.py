@@ -23,6 +23,13 @@ app = FastAPI(
     description="Read-only API over the cleaned Week 2 secondary sales dataset.",
     lifespan=lifespan,
 )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.cors_origins,
+    allow_methods=["GET"],
+    allow_headers=["*"],
+)
+
 
 register_exception_handlers(app)
 
