@@ -111,7 +111,6 @@ class SalesRepository:
     def sku_exists(self, sku_code: str) -> bool:
         return bool((self._df["sku_code"] == sku_code).any())
 
-
     def _distinct(self, columns: list[str]) -> list[dict[str, Any]]:
         unique_rows = self._df[columns].drop_duplicates().sort_values(columns)
         return unique_rows.to_dict(orient="records")
