@@ -1,0 +1,864 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Insights Hub Sales API",
+    "description": "Read-only API over the cleaned Week 2 secondary sales dataset.",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": [
+          "health"
+        ],
+        "summary": "Health check",
+        "description": "Returns {\"status\": \"ok\"} when the API is running.",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sales": {
+      "get": {
+        "tags": [
+          "sales"
+        ],
+        "summary": "List sales rows",
+        "description": "Filtered, paginated sales rows with the total number of matching rows.",
+        "operationId": "list_sales_sales_get",
+        "parameters": [
+          {
+            "name": "region",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Region"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Region to filter by",
+              "title": "Region"
+            },
+            "description": "Region to filter by"
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "State, e.g. Bihar",
+              "title": "State"
+            },
+            "description": "State, e.g. Bihar"
+          },
+          {
+            "name": "brand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Brand, e.g. Navratna",
+              "title": "Brand"
+            },
+            "description": "Brand, e.g. Navratna"
+          },
+          {
+            "name": "sku_code",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "SKU code, e.g. EM-1003",
+              "title": "Sku Code"
+            },
+            "description": "SKU code, e.g. EM-1003"
+          },
+          {
+            "name": "channel",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Channel"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Sales channel",
+              "title": "Channel"
+            },
+            "description": "Sales channel"
+          },
+          {
+            "name": "date_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Start date (YYYY-MM-DD), inclusive",
+              "title": "Date From"
+            },
+            "description": "Start date (YYYY-MM-DD), inclusive"
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "End date (YYYY-MM-DD), inclusive",
+              "title": "Date To"
+            },
+            "description": "End date (YYYY-MM-DD), inclusive"
+          },
+          {
+            "name": "is_return",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "true = only returns, false = only sales",
+              "title": "Is Return"
+            },
+            "description": "true = only returns, false = only sales"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Page number, starts at 1",
+              "default": 1,
+              "title": "Page"
+            },
+            "description": "Page number, starts at 1"
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 200,
+              "minimum": 1,
+              "description": "Rows per page (max 200)",
+              "default": 50,
+              "title": "Page Size"
+            },
+            "description": "Rows per page (max 200)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SalesPage"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sales/summary": {
+      "get": {
+        "tags": [
+          "sales"
+        ],
+        "summary": "Summarise sales",
+        "description": "Total net_value, quantity and row_count, plus groups when group_by is set.",
+        "operationId": "sales_summary_sales_summary_get",
+        "parameters": [
+          {
+            "name": "region",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Region"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Region to filter by",
+              "title": "Region"
+            },
+            "description": "Region to filter by"
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "State, e.g. Bihar",
+              "title": "State"
+            },
+            "description": "State, e.g. Bihar"
+          },
+          {
+            "name": "brand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Brand, e.g. Navratna",
+              "title": "Brand"
+            },
+            "description": "Brand, e.g. Navratna"
+          },
+          {
+            "name": "sku_code",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "SKU code, e.g. EM-1003",
+              "title": "Sku Code"
+            },
+            "description": "SKU code, e.g. EM-1003"
+          },
+          {
+            "name": "channel",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Channel"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Sales channel",
+              "title": "Channel"
+            },
+            "description": "Sales channel"
+          },
+          {
+            "name": "date_from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Start date (YYYY-MM-DD), inclusive",
+              "title": "Date From"
+            },
+            "description": "Start date (YYYY-MM-DD), inclusive"
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "End date (YYYY-MM-DD), inclusive",
+              "title": "Date To"
+            },
+            "description": "End date (YYYY-MM-DD), inclusive"
+          },
+          {
+            "name": "is_return",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "true = only returns, false = only sales",
+              "title": "Is Return"
+            },
+            "description": "true = only returns, false = only sales"
+          },
+          {
+            "name": "group_by",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/GroupBy"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Optional grouping for per-group totals",
+              "title": "Group By"
+            },
+            "description": "Optional grouping for per-group totals"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SalesSummary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/regions": {
+      "get": {
+        "tags": [
+          "master data"
+        ],
+        "summary": "List regions",
+        "description": "Distinct regions found in the sales data.",
+        "operationId": "list_regions_regions_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Region"
+                  },
+                  "type": "array",
+                  "title": "Response List Regions Regions Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/brands": {
+      "get": {
+        "tags": [
+          "master data"
+        ],
+        "summary": "List brands",
+        "description": "Distinct brands found in the sales data.",
+        "operationId": "list_brands_brands_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array",
+                  "title": "Response List Brands Brands Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/skus": {
+      "get": {
+        "tags": [
+          "master data"
+        ],
+        "summary": "List SKUs",
+        "description": "Distinct SKUs with their name and brand.",
+        "operationId": "list_skus_skus_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Sku"
+                  },
+                  "type": "array",
+                  "title": "Response List Skus Skus Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/distributors": {
+      "get": {
+        "tags": [
+          "master data"
+        ],
+        "summary": "List distributors",
+        "description": "Distinct distributors with their name, region and state.",
+        "operationId": "list_distributors_distributors_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Distributor"
+                  },
+                  "type": "array",
+                  "title": "Response List Distributors Distributors Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Channel": {
+        "type": "string",
+        "enum": [
+          "Chemist",
+          "General Trade",
+          "Modern Trade"
+        ],
+        "title": "Channel"
+      },
+      "Distributor": {
+        "properties": {
+          "dist_code": {
+            "type": "string",
+            "title": "Dist Code"
+          },
+          "distributor_name": {
+            "type": "string",
+            "title": "Distributor Name"
+          },
+          "region": {
+            "$ref": "#/components/schemas/Region"
+          },
+          "state": {
+            "type": "string",
+            "title": "State"
+          }
+        },
+        "type": "object",
+        "required": [
+          "dist_code",
+          "distributor_name",
+          "region",
+          "state"
+        ],
+        "title": "Distributor"
+      },
+      "ErrorDetail": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code",
+            "description": "Machine-readable error code, e.g. VALIDATION_ERROR"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "description": "Human-readable explanation of what went wrong"
+          }
+        },
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "ErrorDetail"
+      },
+      "ErrorResponse": {
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/ErrorDetail"
+          }
+        },
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "title": "ErrorResponse",
+        "description": "The single error shape every endpoint uses."
+      },
+      "GroupBy": {
+        "type": "string",
+        "enum": [
+          "region",
+          "state",
+          "brand",
+          "sku",
+          "channel",
+          "month"
+        ],
+        "title": "GroupBy"
+      },
+      "HealthResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "const": "ok",
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status"
+        ],
+        "title": "HealthResponse"
+      },
+      "Region": {
+        "type": "string",
+        "enum": [
+          "East",
+          "North",
+          "South",
+          "West"
+        ],
+        "title": "Region"
+      },
+      "SaleItem": {
+        "properties": {
+          "invoice_no": {
+            "type": "string",
+            "title": "Invoice No"
+          },
+          "invoice_date": {
+            "type": "string",
+            "format": "date",
+            "title": "Invoice Date"
+          },
+          "region": {
+            "$ref": "#/components/schemas/Region"
+          },
+          "state": {
+            "type": "string",
+            "title": "State"
+          },
+          "dist_code": {
+            "type": "string",
+            "title": "Dist Code"
+          },
+          "distributor_name": {
+            "type": "string",
+            "title": "Distributor Name"
+          },
+          "sku_code": {
+            "type": "string",
+            "title": "Sku Code"
+          },
+          "sku_name": {
+            "type": "string",
+            "title": "Sku Name"
+          },
+          "brand": {
+            "type": "string",
+            "title": "Brand"
+          },
+          "channel": {
+            "$ref": "#/components/schemas/Channel"
+          },
+          "qty": {
+            "type": "integer",
+            "title": "Qty"
+          },
+          "net_value": {
+            "type": "number",
+            "title": "Net Value"
+          },
+          "is_return": {
+            "type": "boolean",
+            "title": "Is Return"
+          }
+        },
+        "type": "object",
+        "required": [
+          "invoice_no",
+          "invoice_date",
+          "region",
+          "state",
+          "dist_code",
+          "distributor_name",
+          "sku_code",
+          "sku_name",
+          "brand",
+          "channel",
+          "qty",
+          "net_value",
+          "is_return"
+        ],
+        "title": "SaleItem"
+      },
+      "SalesPage": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/SaleItem"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "page": {
+            "type": "integer",
+            "title": "Page"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total",
+            "description": "Total rows matching the filters, across all pages"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "page",
+          "page_size",
+          "total"
+        ],
+        "title": "SalesPage"
+      },
+      "SalesSummary": {
+        "properties": {
+          "net_value": {
+            "type": "number",
+            "title": "Net Value"
+          },
+          "quantity": {
+            "type": "integer",
+            "title": "Quantity"
+          },
+          "row_count": {
+            "type": "integer",
+            "title": "Row Count"
+          },
+          "groups": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/SummaryGroup"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Groups",
+            "description": "Per-group totals; only present when group_by is set"
+          }
+        },
+        "type": "object",
+        "required": [
+          "net_value",
+          "quantity",
+          "row_count"
+        ],
+        "title": "SalesSummary"
+      },
+      "Sku": {
+        "properties": {
+          "sku_code": {
+            "type": "string",
+            "title": "Sku Code"
+          },
+          "sku_name": {
+            "type": "string",
+            "title": "Sku Name"
+          },
+          "brand": {
+            "type": "string",
+            "title": "Brand"
+          }
+        },
+        "type": "object",
+        "required": [
+          "sku_code",
+          "sku_name",
+          "brand"
+        ],
+        "title": "Sku"
+      },
+      "SummaryGroup": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "Key",
+            "description": "Group value, e.g. North or 2025-12"
+          },
+          "net_value": {
+            "type": "number",
+            "title": "Net Value"
+          },
+          "quantity": {
+            "type": "integer",
+            "title": "Quantity"
+          },
+          "row_count": {
+            "type": "integer",
+            "title": "Row Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "key",
+          "net_value",
+          "quantity",
+          "row_count"
+        ],
+        "title": "SummaryGroup"
+      }
+    }
+  }
+}
