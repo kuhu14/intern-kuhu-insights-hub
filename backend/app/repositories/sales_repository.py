@@ -37,6 +37,7 @@ class SalesRepository:
         df = pd.read_csv(csv_path)
         df["invoice_date"] = pd.to_datetime(df["invoice_date"], format="%Y-%m-%d")
         df["month"] = df["invoice_date"].dt.strftime("%Y-%m")
+        df["qty"] = df["qty"].astype(float)
         # Stable order so pagination always returns the same rows per page.
         self._df = df.sort_values(["invoice_date", "invoice_no"]).reset_index(drop=True)
 
@@ -80,7 +81,7 @@ class SalesRepository:
         matched = self._apply_filters(filters)
         result: dict[str, Any] = {
             "net_value": round(float(matched["net_value"].sum()), 2),
-            "quantity": int(matched["qty"].sum()),
+            "quantity": float(matched["qty"].sum()),
             "row_count": len(matched),
             "groups": None,
         }
@@ -100,7 +101,7 @@ class SalesRepository:
                 {
                     "key": str(key),
                     "net_value": round(float(row.net_value), 2),
-                    "quantity": int(row.quantity),
+                    "quantity": float(row.quantity),
                     "row_count": int(row.row_count),
                 }
                 for key, row in grouped.iterrows()

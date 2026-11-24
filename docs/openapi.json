@@ -707,7 +707,7 @@
             "$ref": "#/components/schemas/Channel"
           },
           "qty": {
-            "type": "integer",
+            "type": "number",
             "title": "Qty"
           },
           "net_value": {
@@ -776,7 +776,7 @@
             "title": "Net Value"
           },
           "quantity": {
-            "type": "integer",
+            "type": "number",
             "title": "Quantity"
           },
           "row_count": {
@@ -842,7 +842,7 @@
             "title": "Net Value"
           },
           "quantity": {
-            "type": "integer",
+            "type": "number",
             "title": "Quantity"
           },
           "row_count": {

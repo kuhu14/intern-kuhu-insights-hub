@@ -73,7 +73,7 @@ class SaleItem(BaseModel):
     sku_name: str
     brand: str
     channel: Channel
-    qty: int
+    qty: float
     net_value: float
     is_return: bool
 
@@ -88,13 +88,13 @@ class SalesPage(BaseModel):
 class SummaryGroup(BaseModel):
     key: str = Field(description="Group value, e.g. North or 2025-12")
     net_value: float
-    quantity: int
+    quantity: float
     row_count: int
 
 
 class SalesSummary(BaseModel):
     net_value: float
-    quantity: int
+    quantity: float
     row_count: int
     groups: list[SummaryGroup] | None = Field(
         None, description="Per-group totals; only present when group_by is set"
