@@ -1,0 +1,10 @@
+# Runtime
+fastapi==0.115.12
+uvicorn[standard]==0.34.0
+pandas==2.2.3
+pydantic==2.10.6
+pydantic-settings==2.7.1
+
+# Testing (TestClient needs httpx)
+pytest==8.3.4
+httpx==0.28.1
