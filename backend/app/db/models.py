@@ -83,11 +83,12 @@ class Sale(Base):
 
     sale_id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
     invoice_no: Mapped[str] = mapped_column(String(30), unique=True)
-    invoice_date: Mapped[date]
+        # index=True: indexes added in migration 0002_add_indexes.
+    invoice_date: Mapped[date] = mapped_column(index=True)
     distributor_id: Mapped[int] = mapped_column(
-        ForeignKey("distributors.distributor_id")
+        ForeignKey("distributors.distributor_id"), index=True
     )
-    sku_id: Mapped[int] = mapped_column(ForeignKey("skus.sku_id"))
+    sku_id: Mapped[int] = mapped_column(ForeignKey("skus.sku_id"), index=True)
     channel: Mapped[str] = mapped_column(String(20))
     quantity: Mapped[int]
     net_value: Mapped[Decimal] = mapped_column(Numeric(12, 2))
