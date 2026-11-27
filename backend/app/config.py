@@ -20,6 +20,8 @@ class Settings(BaseSettings):
     # Only the local frontend may call this API from a browser.
     cors_origins: list[str] = ["http://localhost:3000"]
 
+    # Where sales data comes from: "file" (the Week 2 CSV) or "postgres".
+    repository: Literal["file", "postgres"] = Field("file", validation_alias="REPOSITORY")
     # Postgres connection: the same POSTGRES_* names that docker-compose.yml uses.
     postgres_user: str = Field("insights", validation_alias="POSTGRES_USER")
     postgres_password: str = Field("", validation_alias="POSTGRES_PASSWORD")
