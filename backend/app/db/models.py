@@ -83,7 +83,7 @@ class Sale(Base):
 
     sale_id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
     invoice_no: Mapped[str] = mapped_column(String(30), unique=True)
-        # index=True: indexes added in migration 0002_add_indexes.
+    # index=True: indexes added in migration 0002_add_indexes.
     invoice_date: Mapped[date] = mapped_column(index=True)
     distributor_id: Mapped[int] = mapped_column(
         ForeignKey("distributors.distributor_id"), index=True
