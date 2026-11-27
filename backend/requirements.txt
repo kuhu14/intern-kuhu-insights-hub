@@ -7,6 +7,7 @@ pydantic-settings==2.7.1
 sqlalchemy==2.0.36
 psycopg[binary]==3.2.3
 alembic==1.14.0
+openpyxl==3.1.5
 
 # Testing (TestClient needs httpx)
 pytest==8.3.4
