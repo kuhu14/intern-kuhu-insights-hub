@@ -1,7 +1,8 @@
 from typing import Any
 
 from app.errors import NotFoundError
-from app.repositories.sales_repository import SalesFilters, SalesRepository
+from app.repositories.protocol import SalesRepositoryProtocol
+from app.repositories.sales_repository import SalesFilters
 from app.schemas.sales import SalesFilterParams, SalesListParams, SalesSummaryParams
 
 
@@ -22,7 +23,7 @@ def to_filters(params: SalesFilterParams) -> SalesFilters:
 class SalesService:
     """Business logic between the routers and the repository."""
 
-    def __init__(self, repository: SalesRepository) -> None:
+    def __init__(self, repository: SalesRepositoryProtocol) -> None:
         self._repository = repository
 
     def _check_sku(self, sku_code: str | None) -> None:

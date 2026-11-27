@@ -6,14 +6,15 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from app.errors import register_exception_handlers
-from app.repositories.sales_repository import SalesRepository
+from app.repositories.factory import build_sales_repository
 from app.routers import health, master_data, sales
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncIterator[None]:
-    # Load the CSV once at startup; every request reuses this object.
-    app.state.sales_repository = SalesRepository(settings.sales_csv_path)
+    # Build the repository once at startup (REPOSITORY=file or postgres);
+    # every request reuses this object.
+    app.state.sales_repository = build_sales_repository(settings)
     yield
 
 
