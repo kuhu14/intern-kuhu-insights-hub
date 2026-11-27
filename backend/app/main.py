@@ -9,12 +9,14 @@ from app.errors import register_exception_handlers
 from app.repositories.factory import build_sales_repository
 from app.routers import health, master_data, sales
 
+
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     # Build the repository once at startup (REPOSITORY=file or postgres);
     # every request reuses this object.
     app.state.sales_repository = build_sales_repository(settings)
     yield
+
 
 app = FastAPI(
     title=settings.app_name,

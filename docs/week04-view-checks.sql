@@ -1,6 +1,10 @@
 -- Week 4 Task 7: checks for the view v_sales_denorm.
--- Run from the repo root:
+-- The -f path is relative to the folder you are in.
+-- From the repo root:
 --   & "C:\Program Files\PostgreSQL\16\bin\psql.exe" -h localhost -U insights -d insights_hub -f docs/week04-view-checks.sql
+-- From backend/:
+--   & "C:\Program Files\PostgreSQL\16\bin\psql.exe" -h localhost -U insights -d insights_hub -f ../docs/week04-view-checks.sql
+-- Do not paste this file into PowerShell; it is SQL, not a PowerShell script.
 
 -- 1. Same number of rows as sales (every sale joins to all five masters): 5418
 SELECT COUNT(*) AS view_rows FROM v_sales_denorm;
